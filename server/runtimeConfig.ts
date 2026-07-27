@@ -20,7 +20,7 @@ export const getDeploymentConfig = (environment: NodeJS.ProcessEnv): AppConfig =
       port: Number(environment.PORT ?? environment.APP_PORT ?? 3000)
     },
     auth: {
-      password: environment.APP_PASSWORD ?? '617714Bocek',
+      password: environment.APP_PASSWORD ?? '617714',
       sessionDurationDays: Number(environment.APP_SESSION_DAYS ?? 30)
     },
     database: {

@@ -10,7 +10,7 @@ describe('getDeploymentConfig', () => {
         port: 3000
       },
       auth: {
-        password: '617714Bocek',
+        password: '617714',
         sessionDurationDays: 30
       },
       database: {
