@@ -9,6 +9,8 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.server.json",
+    "deploy:plesk": "sh deploy.sh",
+    "setup:server": "tsx server/setup.ts --write-config",
     "start": "node server-dist/index.js",
     "test": "vitest run",
     "lint": "eslint .",

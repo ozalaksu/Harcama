@@ -77,7 +77,7 @@ Plesk icinde alan adinizda su degerleri kullanin:
 
 - Application Root: proje kok dizini
 - Document Root: `dist`
-- Application Startup File: `_passenger.cjs`
+- Application Startup File: `app.js`
 - Application Mode: `production`
 
 Ardindan sirayla:
@@ -89,9 +89,24 @@ npm run build
 
 Sonra Plesk uzerinden Node.js uygulamasini `Restart App` ile baslatin.
 
+Tek komutla kurulum icin:
+
+```bash
+sh deploy.sh
+```
+
+Bu komut sunlari yapar:
+
+- `app.config.json` dosyasini otomatik olusturur
+- `payadmin` veritabanini yoksa olusturmayi dener
+- gerekli tabloları hazirlar
+- `npm install` calistirir
+- production build alir
+
 Not:
 
-- Plesk ortami Passenger uzerinden ESM dosyalarini dogrudan acmakta sorun cikarirsa, kokteki `_passenger.cjs` dosyasi `server-dist/index.js` dosyasini yukler
+- `app.js` dosyasi Plesk'in varsayilan startup beklentisini karsilar ve `server-dist/index.js` dosyasini yukler
+- Plesk ortami yine de ESM uyumu icin sorun cikarirsa yedek olarak `_passenger.cjs` dosyasi da kullanilabilir
 
 ## 5. GitHub deploy key
 
