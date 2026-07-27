@@ -77,7 +77,7 @@ Plesk icinde alan adinizda su degerleri kullanin:
 
 - Application Root: proje kok dizini
 - Document Root: `dist`
-- Application Startup File: `server-dist/index.js`
+- Application Startup File: `_passenger.cjs`
 - Application Mode: `production`
 
 Ardindan sirayla:
@@ -88,6 +88,10 @@ npm run build
 ```
 
 Sonra Plesk uzerinden Node.js uygulamasini `Restart App` ile baslatin.
+
+Not:
+
+- Plesk ortami Passenger uzerinden ESM dosyalarini dogrudan acmakta sorun cikarirsa, kokteki `_passenger.cjs` dosyasi `server-dist/index.js` dosyasini yukler
 
 ## 5. GitHub deploy key
 
