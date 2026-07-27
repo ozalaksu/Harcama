@@ -1,0 +1,18 @@
+{
+  "server": {
+    "port": 3000
+  },
+  "auth": {
+    "password": "CHANGE_ME",
+    "sessionDurationDays": 30
+  },
+  "database": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "payadmin",
+    "user": "kahyaburak",
+    "password": "CHANGE_ME",
+    "ssl": false,
+    "maintenanceDatabase": "postgres"
+  }
+}
