@@ -14,7 +14,7 @@ const schemaSql = `
   );
 
   CREATE TABLE IF NOT EXISTS app_sessions (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY,
     session_token TEXT UNIQUE NOT NULL,
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -40,17 +40,16 @@ export class PostgresStore implements EventStore {
   constructor(private readonly pool: Pool) {}
 
   async ensureSchema(): Promise<void> {
-    await this.pool.query('CREATE EXTENSION IF NOT EXISTS pgcrypto;');
     await this.pool.query(schemaSql);
   }
 
   async createSession(session: SessionRecord): Promise<void> {
     await this.pool.query(
       `
-        INSERT INTO app_sessions (session_token, is_active, expires_at)
-        VALUES ($1, $2, $3)
+        INSERT INTO app_sessions (id, session_token, is_active, expires_at)
+        VALUES ($1, $2, $3, $4)
       `,
-      [session.sessionToken, session.isActive, session.expiresAt]
+      [randomUUID(), session.sessionToken, session.isActive, session.expiresAt]
     );
   }
 
